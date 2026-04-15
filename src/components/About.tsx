@@ -2,9 +2,9 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useEffect, useState } from 'react';
 
 const SLIDES = [
-  '/sitio original/assets/about-slide-1.png',
-  '/sitio original/assets/about-slide-2.png',
-  '/sitio original/assets/about-slide-3.png',
+  import.meta.env.BASE_URL + 'sitio original/assets/about-slide-1.png',
+  import.meta.env.BASE_URL + 'sitio original/assets/about-slide-2.png',
+  import.meta.env.BASE_URL + 'sitio original/assets/about-slide-3.png',
 ];
 
 const STATS = [
