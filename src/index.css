@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Grotesk:wght@300;400;500&display=swap');
+@import "../public/style.css";
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Acorn", "Cormorant Garamond", serif;
+  --font-body: "Space Grotesk", sans-serif;
+
+  --color-bg: #f8f4f1;
+  --color-fg: #121212;
+  --color-dark: #121212;
+  --color-dark-fg: #f8f4f1;
+  --color-primary: #535353;
+  --color-muted: #888;
+  --color-border: rgba(83, 83, 83, 0.15);
+  --color-border-dark: rgba(248, 244, 241, 0.12);
+  
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+* {
+  cursor: none !important;
+}
+
+@layer base {
+  body {
+    @apply font-body bg-bg text-fg antialiased overflow-hidden cursor-none;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .snap-always {
+    scroll-snap-stop: always;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(18, 18, 18, 0.1);
+    border-radius: 10px;
+  }
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(248, 244, 241, 0.1);
+  }
+  
+  .label {
+    @apply font-body text-base tracking-[0.35em] uppercase;
+  }
+  
+  .word-italic {
+    @apply italic font-light;
+  }
+}
