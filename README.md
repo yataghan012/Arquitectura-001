@@ -1,20 +1,11 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# SGI Arquitectura
 
-# Run and deploy your AI Studio app
+Portfolio profesional de arquitectura enfocado en el diseño de espacios residenciales, comerciales y proyectos de restauración patrimonial.
 
-This contains everything you need to run your app locally.
+## Características
+- **Diseño Responsivo:** Experiencia fluida adaptada a dispositivos móviles y escritorio.
+- **Proyectos Destacados:** Galería interactiva que detalla la visión, ubicación, año, área y procesos de diseño de cada obra.
+- **Tecnologías:** Desarrollado con React, Vite y Tailwind CSS para un rendimiento óptimo y una estética moderna.
 
-View your app in AI Studio: https://ai.studio/apps/7569c49b-9098-459d-b2a9-da581309a535
-
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Despliegue
+Este sitio está configurado para desplegarse automáticamente en GitHub Pages mediante GitHub Actions.
