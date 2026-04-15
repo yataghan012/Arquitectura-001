@@ -9,7 +9,7 @@ export const PROJECTS: Project[] = [
     location: 'Córdoba, Argentina',
     year: '2024',
     area: '185 m²',
-    images: [import.meta.env.BASE_URL + 'sitio-original/assets/project-1.jpg', import.meta.env.BASE_URL + 'sitio-original/assets/project-1.jpg', import.meta.env.BASE_URL + 'sitio-original/assets/project-1.jpg'],
+    images: [import.meta.env.BASE_URL + 'images/project-1.jpg', import.meta.env.BASE_URL + 'images/project-1.jpg', import.meta.env.BASE_URL + 'images/project-1.jpg'],
     featured: true,
     technicalDetails: {
       materials: ['Hormigón visto', 'Madera de incienso', 'Mármol Carrara'],
@@ -18,7 +18,7 @@ export const PROJECTS: Project[] = [
     },
     process: {
       sketch: 'https://picsum.photos/seed/sketch1/1920/1080?grayscale',
-      final: import.meta.env.BASE_URL + 'sitio-original/assets/project-1.jpg',
+      final: import.meta.env.BASE_URL + 'images/project-1.jpg',
       description: 'Desde el primer trazo buscamos la desmaterialización de los límites internos para maximizar la luz.'
     }
   },
@@ -30,10 +30,10 @@ export const PROJECTS: Project[] = [
     location: 'Córdoba, Argentina',
     year: '2024',
     area: '420 m²',
-    images: [import.meta.env.BASE_URL + 'sitio-original/assets/project-2.jpg', import.meta.env.BASE_URL + 'sitio-original/assets/project-2.jpg'],
+    images: [import.meta.env.BASE_URL + 'images/project-2.jpg', import.meta.env.BASE_URL + 'images/project-2.jpg'],
     process: {
       sketch: 'https://picsum.photos/seed/sketch2/1920/1080?grayscale',
-      final: import.meta.env.BASE_URL + 'sitio-original/assets/project-2.jpg',
+      final: import.meta.env.BASE_URL + 'images/project-2.jpg',
       description: 'Transformamos una planta libre en un ecosistema de trabajo dinámico y colaborativo.'
     }
   },
@@ -45,7 +45,7 @@ export const PROJECTS: Project[] = [
     location: 'Córdoba, Argentina',
     year: '2023',
     area: '1.200 m²',
-    images: [import.meta.env.BASE_URL + 'sitio-original/assets/project-3.jpg', import.meta.env.BASE_URL + 'sitio-original/assets/project-3.jpg'],
+    images: [import.meta.env.BASE_URL + 'images/project-3.jpg', import.meta.env.BASE_URL + 'images/project-3.jpg'],
     technicalDetails: {
       materials: ['Ladrillo visto', 'Estructura metálica', 'Policarbonato'],
       client: 'Municipalidad de Córdoba',
@@ -53,7 +53,7 @@ export const PROJECTS: Project[] = [
     },
     process: {
       sketch: 'https://picsum.photos/seed/sketch3/1920/1080?grayscale',
-      final: import.meta.env.BASE_URL + 'sitio-original/assets/project-3.jpg',
+      final: import.meta.env.BASE_URL + 'images/project-3.jpg',
       description: 'La restauración patrimonial exigió un diálogo respetuoso entre lo histórico y lo contemporáneo.'
     }
   },
@@ -65,7 +65,7 @@ export const PROJECTS: Project[] = [
     location: 'Córdoba, Argentina',
     year: '2023',
     area: '310 m²',
-    images: [import.meta.env.BASE_URL + 'sitio-original/assets/project-4.jpg', import.meta.env.BASE_URL + 'sitio-original/assets/project-4.jpg'],
+    images: [import.meta.env.BASE_URL + 'images/project-4.jpg', import.meta.env.BASE_URL + 'images/project-4.jpg'],
     technicalDetails: {
       materials: ['Piedra local', 'Revoque plástico', 'Aluminio negro'],
       client: 'Privado',

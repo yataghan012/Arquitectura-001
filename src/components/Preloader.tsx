@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { PROJECTS } from '../constants';
 
 const CRITICAL_IMAGES = [
-  import.meta.env.BASE_URL + 'sitio-original/assets/hero-bg.jpg',
+  import.meta.env.BASE_URL + 'images/hero-bg.jpg',
   ...PROJECTS.filter(p => p.featured).flatMap(p => p.images),
   ...PROJECTS.filter(p => p.process).map(p => p.process!.final)
 ];
