@@ -134,7 +134,7 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
       }`}
     >
       <motion.img
-        src={import.meta.env.BASE_URL + "sitio original/assets/logo.png"}
+        src={import.meta.env.BASE_URL + "sitio-original/assets/logo.png"}
         alt="SGI Arquitectura"
         initial={{ opacity: 0, filter: 'invert(1) brightness(2) blur(10px)' }}
         animate={{ opacity: 1, filter: 'invert(1) brightness(2) blur(0px)' }}
