@@ -8,13 +8,23 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll({ container: containerRef });
 
-  // Logo shrink logic exactly as original CSS/JS
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const logoSize = useTransform(scrollY, [0, 280], isMobile ? [180, 110] : [300, 180]);
+  // Responsive state
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+  
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const isMobile = windowWidth < 768;
+  const isTablet = windowWidth >= 768 && windowWidth < 1100;
+
+  const logoSize = useTransform(scrollY, [0, 280], isMobile ? [140, 90] : [300, 180]);
   const logoClip = useTransform(scrollY, [0, 280], ['circle(50% at 50% 50%)', 'circle(44% at 50% 50%)']);
-  const spacerWidth = useTransform(scrollY, [0, 280], isMobile ? [180, 110] : [300, 180]);
-  const navPadding = useTransform(scrollY, [0, 280], isMobile ? ['20px 0', '12px 0'] : ['94px 0', '20px 0']);
-  const navHeight = useTransform(scrollY, [0, 280], isMobile ? ['auto', '120px'] : ['auto', '180px']);
+  const spacerWidth = useTransform(scrollY, [0, 280], isMobile ? [140, 90] : [300, 180]);
+  const navPadding = useTransform(scrollY, [0, 280], isMobile ? ['16px 0', '8px 0'] : ['94px 0', '20px 0']);
+  const navHeight = useTransform(scrollY, [0, 280], isMobile ? ['100px', '90px'] : ['auto', '180px']);
 
   useEffect(() => {
     const updateScroll = () => {
@@ -148,18 +158,18 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-contain"
       />
 
-      <div className="w-full px-6 md:px-[48px] lg:px-[96px]">
+      <div className="w-full px-4 md:px-8 lg:px-16 xl:px-24">
         <motion.div 
           className="hidden md:grid grid-cols-[1fr_auto_1fr] items-center w-full"
         >
           {/* Left Side Links */}
-          <div className="flex justify-center items-center">
-            <ul className="flex gap-8 lg:gap-12 list-none">
+          <div className="flex justify-start lg:justify-center items-center">
+            <ul className="flex gap-4 lg:gap-8 xl:gap-12 list-none">
               {navLinks.slice(0, 3).map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="font-body text-[18px] lg:text-[21px] font-medium tracking-[0.25em] uppercase text-[#f8f4f1]/85 hover:text-[#f8f4f1] transition-all relative group"
+                    className="font-body text-[14px] lg:text-[18px] xl:text-[21px] font-medium tracking-[0.2em] lg:tracking-[0.25em] uppercase text-[#f8f4f1]/85 hover:text-[#f8f4f1] transition-all relative group whitespace-nowrap"
                     style={{ textShadow: '0 1px 8px rgba(0, 0, 0, 0.4)' }}
                   >
                     {link.name}
@@ -174,14 +184,14 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
           <motion.div style={{ width: spacerWidth }} className="shrink-0" />
 
           {/* Right Side Links + CTA */}
-          <div className="flex justify-center items-center">
-            <div className="flex items-center gap-8 lg:gap-12">
-              <ul className="flex gap-8 lg:gap-12 list-none">
+          <div className="flex justify-end lg:justify-center items-center">
+            <div className="flex items-center gap-4 lg:gap-8 xl:gap-12">
+              <ul className="flex gap-4 lg:gap-8 xl:gap-12 list-none">
                 {navLinks.slice(3).map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="font-body text-[18px] lg:text-[21px] font-medium tracking-[0.25em] uppercase text-[#f8f4f1]/85 hover:text-[#f8f4f1] transition-all relative group"
+                      className="font-body text-[14px] lg:text-[18px] xl:text-[21px] font-medium tracking-[0.2em] lg:tracking-[0.25em] uppercase text-[#f8f4f1]/85 hover:text-[#f8f4f1] transition-all relative group whitespace-nowrap"
                       style={{ textShadow: '0 1px 8px rgba(0, 0, 0, 0.4)' }}
                     >
                       {link.name}
@@ -195,32 +205,35 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
                 href="#contacto"
                 initial="initial"
                 whileHover="hover"
-                className="relative inline-block font-body text-[16px] lg:text-[19px] font-medium tracking-[0.25em] uppercase text-black bg-[#faebd7] border border-[#f8f4f1]/25 px-[18px] py-[8px] lg:px-[22px] lg:py-[10px] hover:bg-[#f8f4f1] hover:text-black hover:border-[#f8f4f1] whitespace-nowrap"
+                className="relative inline-block font-body text-[12px] lg:text-[16px] xl:text-[19px] font-medium tracking-[0.15em] lg:tracking-[0.25em] uppercase text-black bg-[#faebd7] border border-[#f8f4f1]/25 px-3 py-2 lg:px-[18px] lg:py-[8px] xl:px-[22px] xl:py-[10px] hover:bg-[#f8f4f1] hover:text-black hover:border-[#f8f4f1] whitespace-nowrap"
               >
                 <CornerTicks color="black" />
-                Agendar consulta
+                {isTablet ? 'Contacto' : 'Agendar consulta'}
               </motion.a>
             </div>
           </div>
         </motion.div>
 
-        {/* Mobile Hamburger */}
-        <div className="md:hidden flex items-center h-[80px] ml-auto">
+        {/* Mobile Header */}
+        <div className="md:hidden flex items-center justify-between w-full h-[60px]">
+          <div className="w-10" /> {/* Spacer to balance the hamburger */}
+          
           <button 
-            className="z-[1002] flex flex-col gap-1.5"
+            className="z-[1002] flex flex-col gap-1.5 p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Menu"
           >
             <motion.span 
               animate={isMobileMenuOpen ? { rotate: 45, y: 7.5 } : { rotate: 0, y: 0 }}
-              className="w-6 h-[1.5px] bg-dark-fg block" 
+              className="w-6 h-[1.5px] bg-[#f8f4f1] block" 
             />
             <motion.span 
               animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="w-6 h-[1.5px] bg-dark-fg block" 
+              className="w-6 h-[1.5px] bg-[#f8f4f1] block" 
             />
             <motion.span 
               animate={isMobileMenuOpen ? { rotate: -45, y: -7.5 } : { rotate: 0, y: 0 }}
-              className="w-6 h-[1.5px] bg-dark-fg block" 
+              className="w-6 h-[1.5px] bg-[#f8f4f1] block" 
             />
           </button>
         </div>

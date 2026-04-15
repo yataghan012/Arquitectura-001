@@ -1,5 +1,6 @@
 import { Project, Service } from './types';
 
+// Updated image paths to /public/images
 export const PROJECTS: Project[] = [
   {
     id: '1',
