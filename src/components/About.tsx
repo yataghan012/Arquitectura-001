@@ -45,8 +45,8 @@ export default function About() {
   }, []);
 
   return (
-    <section id="estudio" className="min-h-[100dvh] md:h-screen w-full bg-bg overflow-hidden">
-      <div className="grid grid-cols-1 md:grid-cols-2 h-full">
+    <section id="estudio" className="min-h-screen w-full bg-bg overflow-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen">
         {/* Visual Column */}
         <div className="relative overflow-hidden hidden md:block h-full">
           <div className="h-full overflow-hidden">

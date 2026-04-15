@@ -15,8 +15,8 @@ export default function Portfolio({ onProjectClick }: PortfolioProps) {
   const categories = ['all', 'Residencial', 'Comercial', 'Institucional'] as const;
 
   return (
-    <section id="portafolio" className="min-h-[100dvh] md:h-screen w-full px-[24px] md:px-[96px] py-[80px] md:py-0 bg-bg flex flex-col justify-center overflow-hidden">
-      <div className="max-w-[1400px] mx-auto w-full flex flex-col h-full py-[40px] md:py-[60px]">
+    <section id="portafolio" className="min-h-screen w-full px-[24px] md:px-[96px] py-[80px] md:py-[120px] bg-bg flex flex-col justify-center">
+      <div className="max-w-[1400px] mx-auto w-full flex flex-col h-full">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-[24px] shrink-0">
           <div>
             <motion.h2
@@ -50,7 +50,7 @@ export default function Portfolio({ onProjectClick }: PortfolioProps) {
           ))}
         </div>
 
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-3 gap-[20px] md:gap-[24px] overflow-y-auto pr-2 custom-scrollbar flex-grow">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px] md:gap-[24px]">
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project, i) => (
             <motion.div

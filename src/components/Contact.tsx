@@ -28,7 +28,7 @@ export default function Contact() {
   }, [isHovered]);
 
   return (
-    <section id="contacto" className="min-h-[100dvh] md:h-screen w-full px-[24px] md:px-[96px] py-[80px] md:py-0 bg-dark flex flex-col justify-center overflow-hidden">
+    <section id="contacto" className="min-h-screen w-full px-[24px] md:px-[96px] py-[80px] md:py-[120px] bg-dark flex flex-col justify-center">
       <div className="max-w-[1400px] mx-auto w-full flex flex-col h-full py-[40px] md:py-[60px] justify-center">
         <div className="grid grid-cols-1 md:grid-cols-[7fr_4fr] gap-[48px] md:gap-[64px] items-end">
         <div>

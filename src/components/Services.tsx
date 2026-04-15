@@ -3,7 +3,7 @@ import { SERVICES } from '../constants';
 
 export default function Services() {
   return (
-    <section id="servicios" className="min-h-[100dvh] md:h-screen w-full px-[24px] md:px-[96px] py-[80px] md:py-0 bg-dark flex flex-col justify-center">
+    <section id="servicios" className="min-h-screen w-full px-[24px] md:px-[96px] py-[80px] md:py-[120px] bg-dark flex flex-col justify-center">
       <div className="mb-[32px] md:mb-[48px]">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}

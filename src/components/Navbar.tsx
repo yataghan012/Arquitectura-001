@@ -18,13 +18,13 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
   }, []);
 
   const isMobile = windowWidth < 768;
-  const isTablet = windowWidth >= 768 && windowWidth < 1100;
+  const isTablet = windowWidth >= 768 && windowWidth < 1200; // Increased threshold for tablet/zoom
 
-  const logoSize = useTransform(scrollY, [0, 280], isMobile ? [140, 90] : [300, 180]);
+  const logoSize = useTransform(scrollY, [0, 280], isMobile ? [120, 80] : [300, 180]);
   const logoClip = useTransform(scrollY, [0, 280], ['circle(50% at 50% 50%)', 'circle(44% at 50% 50%)']);
-  const spacerWidth = useTransform(scrollY, [0, 280], isMobile ? [140, 90] : [300, 180]);
-  const navPadding = useTransform(scrollY, [0, 280], isMobile ? ['16px 0', '8px 0'] : ['94px 0', '20px 0']);
-  const navHeight = useTransform(scrollY, [0, 280], isMobile ? ['100px', '90px'] : ['auto', '180px']);
+  const spacerWidth = useTransform(scrollY, [0, 280], isMobile ? [120, 80] : [300, 180]);
+  const navPadding = useTransform(scrollY, [0, 280], isMobile ? ['12px 0', '6px 0'] : ['94px 0', '20px 0']);
+  const navHeight = useTransform(scrollY, [0, 280], isMobile ? ['90px', '80px'] : ['auto', '180px']);
 
   useEffect(() => {
     const updateScroll = () => {

@@ -58,7 +58,7 @@ export default function Process({ containerRef: scrollContainerRef }: { containe
   }, [isDragging, sliderX]);
 
   return (
-    <section id="proceso" ref={containerRef} className="min-h-[100dvh] md:h-screen w-full relative px-[24px] md:px-[96px] py-[80px] md:py-0 bg-dark overflow-hidden flex items-center">
+    <section id="proceso" ref={containerRef} className="min-h-screen w-full relative px-[24px] md:px-[96px] py-[80px] md:py-[120px] bg-dark overflow-hidden flex items-center">
       {/* Blueprint Grid Pattern */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
         style={{ 

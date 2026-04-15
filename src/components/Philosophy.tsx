@@ -29,7 +29,7 @@ const PHILOSOPHY_ITEMS = [
 
 export default function Philosophy() {
   return (
-    <section id="filosofia" className="min-h-[100dvh] md:h-screen w-full px-[24px] md:px-[96px] py-[80px] md:py-0 bg-dark text-[#f8f4f1] flex flex-col justify-center">
+    <section id="filosofia" className="min-h-screen w-full px-[24px] md:px-[96px] py-[80px] md:py-[120px] bg-dark text-[#f8f4f1] flex flex-col justify-center">
       <div className="max-w-[1400px] mx-auto w-full">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
