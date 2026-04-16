@@ -33,7 +33,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.97 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-10 w-[100vw] h-[100dvh] md:w-[90vw] md:h-[85vh] max-w-[1400px] bg-bg flex flex-col md:flex-row overflow-hidden"
+            className="relative z-10 w-full h-full md:w-[90vw] md:h-[85vh] max-w-[1400px] bg-bg flex flex-col md:flex-row overflow-hidden"
           >
             {/* Shutter Entrance Effect for Modal */}
             <motion.div 

@@ -24,8 +24,16 @@
 }
 
 @layer base {
+  html, body {
+    @apply m-0 p-0 w-full overflow-x-hidden;
+  }
+
+  html {
+    @apply bg-bg;
+  }
+
   body {
-    @apply font-body bg-bg text-fg antialiased overflow-hidden cursor-none;
+    @apply font-body bg-bg text-fg antialiased cursor-none;
   }
   
   h1, h2, h3, h4 {
@@ -38,23 +46,19 @@
     scroll-snap-stop: always;
   }
 
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 4px;
+  /* Ocultar scrollbar nativa */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(18, 18, 18, 0.1);
-    border-radius: 10px;
-  }
-  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(248, 244, 241, 0.1);
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
   
   .label {
     @apply font-body text-base tracking-[0.35em] uppercase;
   }
+
   
   .word-italic {
     @apply italic font-light;

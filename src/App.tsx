@@ -17,6 +17,7 @@ import Process from './components/Process';
 import ShutterOverlay from './components/ShutterOverlay';
 import GrainOverlay from './components/GrainOverlay';
 import Preloader from './components/Preloader';
+import ScrollProgress from './components/ScrollProgress';
 import { Project } from './types';
 
 export default function App() {
@@ -24,7 +25,8 @@ export default function App() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <main ref={containerRef} className="relative h-screen overflow-y-auto scroll-smooth custom-scrollbar">
+    <main ref={containerRef} className="relative h-screen overflow-y-auto overflow-x-hidden scroll-smooth bg-bg w-full no-scrollbar">
+      <ScrollProgress containerRef={containerRef} />
       <Preloader />
       <GrainOverlay />
       <ShutterOverlay />
