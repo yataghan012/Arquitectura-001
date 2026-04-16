@@ -60,7 +60,7 @@ export default function Portfolio({ onProjectClick }: PortfolioProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               exit={{ opacity: 0, scale: 0.97 }}
-              whileHover={{ y: -10 }}
+              whileHover={{ y: -6 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
               onClick={() => onProjectClick(project)}
               className={`flex flex-col group project-card ${project.featured ? 'md:col-span-2' : ''}`}
@@ -79,13 +79,13 @@ export default function Portfolio({ onProjectClick }: PortfolioProps) {
                   src={project.images[0]}
                   alt={project.title}
                   loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.06]"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
                 />
                 <div 
                   className="absolute inset-0 flex items-end p-[20px] clip-path-inset-[100%_0_0_0] transition-all duration-[650ms] ease-out group-hover:clip-path-inset-[0%_0_0_0]"
                   style={{ background: 'linear-gradient(to top, rgba(12, 12, 12, 0.75) 0%, rgba(12, 12, 12, 0.05) 60%, transparent 100%)' }}
                 >
-                  <span className="font-body text-[20px] md:text-[27px] tracking-[0.3em] uppercase text-dark-fg opacity-0 translate-y-[8px] transition-all duration-400 delay-150 group-hover:opacity-100 group-hover:translate-y-0">
+                  <span className="font-body text-[20px] md:text-[27px] tracking-[0.3em] uppercase text-dark-fg opacity-0 translate-y-[8px] transition-all duration-[400ms] delay-150 group-hover:opacity-100 group-hover:translate-y-0">
                     Ver proyecto →
                   </span>
                 </div>

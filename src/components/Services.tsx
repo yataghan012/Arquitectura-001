@@ -39,7 +39,7 @@ export default function Services() {
               <span className="font-body text-[20px] tracking-[0.3em] text-[#f8f4f1]/25 shrink-0">
                 {service.number}
               </span>
-              <h3 className="text-[clamp(45px,3vw,60px)] font-normal text-dark-fg flex-grow transition-transform duration-400 ease-out group-hover:translate-x-[6px]">
+              <h3 className="text-[clamp(45px,3vw,60px)] font-normal text-dark-fg flex-grow transition-transform duration-[400ms] ease-out group-hover:translate-x-[6px]">
                 {service.title}
               </h3>
               <span className="text-[20px] text-[#f8f4f1]/20 transition-all duration-300 ease-out shrink-0 group-hover:text-[#f8f4f1]/70 group-hover:translate-x-[4px] group-hover:-translate-y-[4px]">

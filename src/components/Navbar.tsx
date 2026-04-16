@@ -108,11 +108,11 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
               <a
                 key={link.name}
                 href={link.href}
-                className="font-body text-[16px] xl:text-[20px] font-medium tracking-[0.2em] uppercase text-[#f8f4f1]/85 hover:text-[#f8f4f1] transition-all relative group whitespace-nowrap"
+                className="font-body text-[16px] xl:text-[20px] font-medium tracking-[0.2em] uppercase text-[#f8f4f1]/85 hover:text-[#f8f4f1] transition-[color,opacity] relative group whitespace-nowrap"
                 style={{ textShadow: '0 1px 8px rgba(0, 0, 0, 0.4)' }}
               >
                 {link.name}
-                <span className="absolute left-0 bottom-[-4px] w-0 h-[1px] bg-[#f8f4f1] transition-all duration-400 group-hover:w-full" />
+                <span className="absolute left-0 bottom-[-4px] w-0 h-[1px] bg-[#f8f4f1] transition-[width] duration-[400ms] group-hover:w-full" />
               </a>
             ))}
           </div>
@@ -141,11 +141,11 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
               <a
                 key={link.name}
                 href={link.href}
-                className="font-body text-[16px] xl:text-[20px] font-medium tracking-[0.2em] uppercase text-[#f8f4f1]/85 hover:text-[#f8f4f1] transition-all relative group whitespace-nowrap"
+                className="font-body text-[16px] xl:text-[20px] font-medium tracking-[0.2em] uppercase text-[#f8f4f1]/85 hover:text-[#f8f4f1] transition-[color,opacity] relative group whitespace-nowrap"
                 style={{ textShadow: '0 1px 8px rgba(0, 0, 0, 0.4)' }}
               >
                 {link.name}
-                <span className="absolute left-0 bottom-[-4px] w-0 h-[1px] bg-[#f8f4f1] transition-all duration-400 group-hover:w-full" />
+                <span className="absolute left-0 bottom-[-4px] w-0 h-[1px] bg-[#f8f4f1] transition-[width] duration-[400ms] group-hover:w-full" />
               </a>
             ))}
             <motion.a
