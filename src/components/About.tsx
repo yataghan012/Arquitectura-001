@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from 'motion/react';
-import { useEffect, useState } from 'react';
+import { motion, AnimatePresence, useInView } from 'motion/react';
+import { useEffect, useState, useRef } from 'react';
 
 const SLIDES = [
   import.meta.env.BASE_URL + 'images/about-slide-1.png',
@@ -15,8 +15,12 @@ const STATS = [
 
 function CountUp({ value, suffix }: { value: number; suffix: string }) {
   const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   useEffect(() => {
+    if (!isInView) return;
+
     let start = 0;
     const duration = 1800;
     const startTime = performance.now();
@@ -29,9 +33,9 @@ function CountUp({ value, suffix }: { value: number; suffix: string }) {
     };
 
     requestAnimationFrame(tick);
-  }, [value]);
+  }, [value, isInView]);
 
-  return <>{count}{suffix}</>;
+  return <span ref={ref}>{count}{suffix}</span>;
 }
 
 export default function About() {

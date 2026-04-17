@@ -17,13 +17,12 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // We use 1024px (lg) as the breakpoint to switch to the hamburger menu.
-  // This guarantees that even at high zoom levels, the desktop menu won't break,
-  // it will just gracefully switch to the mobile menu.
-  const isMobile = windowWidth < 1024;
+  // We use 1280px (xl) as the breakpoint to switch to the hamburger menu to ensure
+  // zoom scaling and smaller desktops don't crash the links into the logo.
+  const isMobile = windowWidth < 1280;
 
-  // Logo scaling
-  const logoSize = useTransform(scrollY, [0, 280], isMobile ? [150, 90] : [280, 140]);
+  // Logo scaling responsive to zoom
+  const logoSize = useTransform(scrollY, [0, 280], isMobile ? [120, 80] : [220, 120]);
   const logoClip = useTransform(scrollY, [0, 280], ['circle(50% at 50% 50%)', 'circle(44% at 50% 50%)']);
   
   // Navigation padding
@@ -68,7 +67,7 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
 
   const CornerTicks = ({ color = "black" }: { color?: string }) => (
     <svg 
-      className="absolute inset-[-8px] w-[calc(100%+16px)] h-[calc(100%+16px)] pointer-events-none overflow-visible"
+      className="absolute inset-[-8px] w-[calc(100%+16px)] h-[calc(100%+16px)] pointer-events-none overflow-visible hidden sm:block"
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
     >
@@ -94,21 +93,25 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
         padding: navPadding,
       }}
       className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-center transition-all duration-500 ${
-        isScrolled ? 'bg-dark/92 backdrop-blur-lg' : 'bg-transparent'
+        isScrolled ? 'bg-dark/92 backdrop-blur-lg shadow-sm shadow-black/10' : 'bg-transparent'
       }`}
     >
-      <div className="w-full px-6 lg:px-12 xl:px-24">
+      {/* 
+        Wrap content in max-w-7xl to fix extreme ultrawide spreads, 
+        and scale padding responsively based on viewport width to avoid zoom breaking.
+      */}
+      <div className="w-full max-w-[1600px] px-[clamp(1rem,3vw,3rem)] md:px-[clamp(2rem,4vw,6rem)]">
         
-        {/* DESKTOP LAYOUT (lg and up) */}
-        <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center w-full">
+        {/* DESKTOP LAYOUT (xl and up) */}
+        <div className="hidden xl:grid grid-cols-[1fr_auto_1fr] items-center w-full gap-[clamp(1rem,2vw,3rem)]">
           
           {/* Left Links */}
-          <div className="flex justify-start items-center gap-4 xl:gap-10">
+          <div className="flex justify-start items-center gap-[clamp(1rem,2vw,2.5rem)] min-w-0">
             {navLinks.slice(0, 3).map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="font-body text-[16px] xl:text-[20px] font-medium tracking-[0.2em] uppercase text-[#f8f4f1]/85 hover:text-[#f8f4f1] transition-[color,opacity] relative group whitespace-nowrap"
+                className="font-body text-[clamp(13px,1vw,16px)] font-medium tracking-[0.2em] uppercase text-[#f8f4f1]/85 hover:text-[#f8f4f1] transition-[color,opacity] relative group whitespace-nowrap"
                 style={{ textShadow: '0 1px 8px rgba(0, 0, 0, 0.4)' }}
               >
                 {link.name}
@@ -118,7 +121,7 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
           </div>
 
           {/* Center Logo */}
-          <div className="flex justify-center items-center px-8">
+          <div className="flex justify-center items-center px-4">
             <motion.img
               src={import.meta.env.BASE_URL + "images/logo.png"}
               alt="SGI Arquitectura"
@@ -136,12 +139,12 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
           </div>
 
           {/* Right Links + CTA */}
-          <div className="flex justify-end items-center gap-4 xl:gap-10">
+          <div className="flex justify-end items-center gap-[clamp(1rem,2vw,2.5rem)] min-w-0">
             {navLinks.slice(3).map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="font-body text-[16px] xl:text-[20px] font-medium tracking-[0.2em] uppercase text-[#f8f4f1]/85 hover:text-[#f8f4f1] transition-[color,opacity] relative group whitespace-nowrap"
+                className="font-body text-[clamp(13px,1vw,16px)] font-medium tracking-[0.2em] uppercase text-[#f8f4f1]/85 hover:text-[#f8f4f1] transition-[color,opacity] relative group whitespace-nowrap"
                 style={{ textShadow: '0 1px 8px rgba(0, 0, 0, 0.4)' }}
               >
                 {link.name}
@@ -152,7 +155,7 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
               href="#contacto"
               initial="initial"
               whileHover="hover"
-              className="relative inline-block font-body text-[12px] xl:text-[16px] font-medium tracking-[0.15em] uppercase text-black bg-[#faebd7] border border-[#f8f4f1]/25 px-[14px] py-[8px] xl:px-[20px] xl:py-[10px] hover:bg-[#f8f4f1] hover:text-black hover:border-[#f8f4f1] whitespace-nowrap"
+              className="relative inline-block font-body text-[clamp(11px,0.8vw,14px)] font-medium tracking-[0.15em] uppercase text-black bg-[#faebd7] border border-[#f8f4f1]/25 px-[clamp(12px,1.5vw,20px)] py-[clamp(6px,0.8vw,10px)] hover:bg-[#f8f4f1] hover:text-black hover:border-[#f8f4f1] whitespace-nowrap"
             >
               <CornerTicks color="black" />
               Agendar consulta
@@ -160,12 +163,12 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
           </div>
         </div>
 
-        {/* MOBILE/TABLET LAYOUT (below lg) */}
-        <div className="lg:hidden flex items-center justify-between w-full min-h-[80px]">
-          <div className="w-10" /> {/* Spacer to balance the hamburger */}
+        {/* MOBILE/TABLET LAYOUT (below xl) */}
+        <div className="xl:hidden flex items-center justify-between w-full min-h-[60px] md:min-h-[80px]">
+          <div className="w-10 sm:w-16" /> {/* Spacer to balance the hamburger */}
           
           {/* Center Logo for Mobile */}
-          <div className="flex justify-center items-center py-2">
+          <div className="flex justify-center items-center py-2 h-full flex-grow">
             <motion.img
               src={import.meta.env.BASE_URL + "images/logo.png"}
               alt="SGI Arquitectura"
@@ -177,7 +180,7 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
                 width: logoSize,
                 clipPath: logoClip,
               }}
-              className="object-contain"
+              className="object-contain max-h-[140px] sm:max-h-none"
             />
           </div>
 
@@ -188,15 +191,15 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
           >
             <motion.span 
               animate={isMobileMenuOpen ? { rotate: 45, y: 7.5 } : { rotate: 0, y: 0 }}
-              className="w-6 h-[1.5px] bg-[#f8f4f1] block" 
+              className="w-6 sm:w-8 h-[1.5px] bg-[#f8f4f1] block origin-center" 
             />
             <motion.span 
               animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="w-6 h-[1.5px] bg-[#f8f4f1] block" 
+              className="w-6 sm:w-8 h-[1.5px] bg-[#f8f4f1] block" 
             />
             <motion.span 
               animate={isMobileMenuOpen ? { rotate: -45, y: -7.5 } : { rotate: 0, y: 0 }}
-              className="w-6 h-[1.5px] bg-[#f8f4f1] block" 
+              className="w-6 sm:w-8 h-[1.5px] bg-[#f8f4f1] block origin-center" 
             />
           </button>
         </div>
@@ -207,7 +210,7 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
         initial={{ clipPath: 'inset(0 0 100% 0)' }}
         animate={{ clipPath: isMobileMenuOpen ? 'inset(0 0 0 0)' : 'inset(0 0 100% 0)' }}
         transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-        className="fixed inset-0 bg-dark z-[1000] flex flex-col items-center justify-center gap-9 lg:hidden"
+        className="fixed inset-0 bg-dark z-[1000] flex flex-col items-center justify-center gap-6 sm:gap-9 xl:hidden overflow-y-auto pt-20 pb-10"
       >
         <motion.div 
           className="absolute inset-0 bg-[#f8f4f1]/5 pointer-events-none"
@@ -221,7 +224,7 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
             key={link.name}
             href={link.href}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="font-body text-3xl tracking-[0.25em] uppercase text-dark-fg/85 hover:text-white transition-colors"
+            className="font-body text-2xl sm:text-3xl tracking-[0.25em] uppercase text-dark-fg/85 hover:text-white transition-colors"
           >
             {link.name}
           </a>
@@ -231,7 +234,7 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
           initial="initial"
           whileHover="hover"
           onClick={() => setIsMobileMenuOpen(false)}
-          className="relative font-body text-2xl tracking-[0.25em] uppercase text-black bg-[#faebd7] px-8 py-4 mt-4"
+          className="relative font-body text-xl sm:text-2xl tracking-[0.25em] uppercase text-black bg-[#faebd7] px-6 py-3 sm:px-8 sm:py-4 mt-4"
         >
           <CornerTicks color="black" />
           Agendar consulta
