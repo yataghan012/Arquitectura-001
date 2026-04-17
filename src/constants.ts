@@ -67,6 +67,7 @@ export const PROJECTS: Project[] = [
     year: '2023',
     area: '310 m²',
     images: [import.meta.env.BASE_URL + 'images/project-4.jpg', import.meta.env.BASE_URL + 'images/project-4.jpg'],
+    featured: true,
     technicalDetails: {
       materials: ['Piedra local', 'Revoque plástico', 'Aluminio negro'],
       client: 'Privado',
@@ -116,21 +117,6 @@ export const PROJECTS: Project[] = [
       materials: ['Hormigón blanco', 'Vidrio esmerilado', 'Pisos de terrazo'],
       client: 'Gobierno Provincial',
       status: 'En uso'
-    }
-  },
-  {
-    id: '8',
-    title: 'Loft General Paz',
-    category: 'Residencial',
-    description: 'Refuncionalización de un antiguo galpón industrial en una vivienda contemporánea. Se preservaron las cerchas metálicas originales contrastando con intervenciones modernas de diseño.',
-    location: 'Barrio General Paz, Córdoba',
-    year: '2024',
-    area: '180 m²',
-    images: ['https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=1600'],
-    technicalDetails: {
-      materials: ['Ladrillo recuperado', 'Hierro negro', 'Madera de demolición'],
-      client: 'Privado',
-      status: 'Finalizado'
     }
   }
 ];

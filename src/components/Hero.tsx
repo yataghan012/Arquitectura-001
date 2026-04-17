@@ -114,7 +114,7 @@ export default function Hero() {
 
       {/* LAYER 2: Midground Text */}
       <motion.div 
-        className="relative z-10 flex flex-col items-center justify-center w-full px-4 sm:px-8 pointer-events-none"
+        className="relative z-10 flex flex-col items-center justify-center w-full px-4 sm:px-8 pointer-events-none pt-[12vh] md:pt-[15vh] lg:pt-[200px]"
         style={{ x: textX, y: textY }}
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}

@@ -22,7 +22,7 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
   const isMobile = windowWidth < 1280;
 
   // Logo scaling responsive to zoom
-  const logoSize = useTransform(scrollY, [0, 280], isMobile ? [120, 80] : [220, 120]);
+  const logoSize = useTransform(scrollY, [0, 280], isMobile ? [220, 120] : [340, 150]);
   const logoClip = useTransform(scrollY, [0, 280], ['circle(50% at 50% 50%)', 'circle(44% at 50% 50%)']);
   
   // Navigation padding
@@ -133,6 +133,8 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
                 height: logoSize,
                 width: logoSize,
                 clipPath: logoClip,
+                maxHeight: '35vh',
+                maxWidth: '35vh'
               }}
               className="object-contain"
             />
@@ -179,8 +181,10 @@ export default function Navbar({ containerRef }: { containerRef: React.RefObject
                 height: logoSize,
                 width: logoSize,
                 clipPath: logoClip,
+                maxHeight: '30vh',
+                maxWidth: '30vh'
               }}
-              className="object-contain max-h-[140px] sm:max-h-none"
+              className="object-contain sm:max-h-none"
             />
           </div>
 

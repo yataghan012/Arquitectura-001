@@ -63,9 +63,9 @@ export default function Portfolio({ onProjectClick }: PortfolioProps) {
               whileHover={{ y: -6 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
               onClick={() => onProjectClick(project)}
-              className={`flex flex-col group project-card ${project.featured ? 'md:col-span-2' : ''}`}
+              className={`flex flex-col group project-card h-full ${project.featured ? 'md:col-span-2' : ''}`}
             >
-              <div className={`relative overflow-hidden shadow-sm transition-shadow duration-500 group-hover:shadow-2xl ${project.featured ? 'aspect-[4/3] md:aspect-[16/9] md:max-h-[58vh]' : 'aspect-[4/3]'}`}>
+              <div className={`relative overflow-hidden shadow-sm transition-shadow duration-500 group-hover:shadow-2xl flex-grow ${project.featured ? 'aspect-[4/3] md:aspect-[16/9] md:max-h-[58vh]' : 'aspect-[4/3]'}`}>
                 {/* Internal Shutter Reveal for Image */}
                 <motion.div 
                   initial={{ scaleY: 1 }}
@@ -90,7 +90,7 @@ export default function Portfolio({ onProjectClick }: PortfolioProps) {
                   </span>
                 </div>
               </div>
-              <div className="flex items-start justify-between mt-[14px] pb-[4px]">
+              <div className="flex items-start justify-between mt-[14px] pb-[4px] shrink-0">
                 <div>
                   <h3 className="text-[18px] md:text-[22px] font-normal text-fg leading-[1.2]">{project.title}</h3>
                   <p className="font-body text-[11px] tracking-[0.2em] uppercase text-muted mt-[4px]">{project.category}</p>
