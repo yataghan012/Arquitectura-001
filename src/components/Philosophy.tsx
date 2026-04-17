@@ -29,7 +29,7 @@ const PHILOSOPHY_ITEMS = [
 
 export default function Philosophy() {
   return (
-    <section id="filosofia" className="min-h-screen w-full px-[24px] md:px-[96px] py-[80px] md:py-[120px] bg-dark text-[#f8f4f1] flex flex-col justify-center">
+    <section id="filosofia" className="w-full px-[24px] md:px-[96px] py-[40px] md:py-[60px] bg-dark text-[#f8f4f1]">
       <div className="max-w-[1400px] mx-auto w-full">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
@@ -84,7 +84,7 @@ export default function Philosophy() {
 
               {/* Atmospheric Background Image */}
               <div 
-                className="absolute inset-0 z-0 opacity-[0.4] mix-blend-luminosity grayscale transition-all duration-700 group-hover:opacity-[0.6] group-hover:scale-110"
+                className="absolute inset-0 z-0 opacity-[0.65] mix-blend-normal transition-all duration-[800ms] ease-out group-hover:opacity-[0.9] group-hover:scale-105"
                 style={{ 
                   backgroundImage: `url(${item.image})`,
                   backgroundSize: 'cover',
@@ -92,15 +92,15 @@ export default function Philosophy() {
                 }}
               />
               
-              {/* Gradient Overlay for legibility */}
-              <div className="absolute inset-0 z-[1] bg-gradient-to-t from-dark via-dark/60 to-transparent opacity-90" />
+              {/* Gradient Overlay for legibility (Option C: Solid Base Shadow) */}
+              <div className="absolute inset-x-0 bottom-0 h-3/4 z-[1] bg-gradient-to-t from-dark via-dark/70 to-transparent opacity-100 transition-opacity duration-500 group-hover:opacity-90" />
 
               {/* Text Content Container (Option 1: Natural Flow) */}
               <div className="relative z-10 flex flex-col gap-4">
-                <h3 className="text-[20px] md:text-[24px] font-light tracking-[0.1em] uppercase transition-transform duration-500 md:group-hover:-translate-y-1">
+                <h3 className="text-[20px] md:text-[24px] font-medium tracking-[0.12em] uppercase text-white transition-transform duration-500 md:group-hover:-translate-y-1">
                   {item.title}
                 </h3>
-                <p className="font-body text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.6] text-[#f8f4f1]/80 transition-all duration-500 opacity-100 md:opacity-0 md:group-hover:opacity-100 translate-y-0 md:translate-y-[10px] md:group-hover:translate-y-0">
+                <p className="font-body text-[14px] md:text-[16px] leading-[1.6] text-white/90 transition-all duration-500 opacity-100 md:opacity-0 md:group-hover:opacity-100 translate-y-0 md:translate-y-[10px] md:group-hover:translate-y-0 max-w-[90%]">
                   {item.description}
                 </p>
               </div>

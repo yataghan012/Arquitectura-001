@@ -1,9 +1,13 @@
 import { motion } from 'motion/react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Loader2 } from 'lucide-react';
 
 export default function Contact() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  
+  // Form State
+  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   useEffect(() => {
     if (!isHovered) {
@@ -27,16 +31,41 @@ export default function Contact() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [isHovered]);
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormState('submitting');
+    
+    const formData = new FormData(e.currentTarget);
+    // Agrega aquí The Web3Forms access key cuando crees tu cuenta
+    // Mientras tanto, esto simula una alerta exitosa.
+    formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
+
+    try {
+      // Simulación de envío de 1.5s
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      setFormState('success');
+      (e.target as HTMLFormElement).reset();
+      
+      // Ocultar mensaje tras 5 segundos
+      setTimeout(() => setFormState('idle'), 5000);
+      
+    } catch (error) {
+      setFormState('error');
+      setTimeout(() => setFormState('idle'), 4000);
+    }
+  };
+
   return (
-    <section id="contacto" className="min-h-screen w-full px-[24px] md:px-[96px] py-[80px] md:py-[120px] bg-dark flex flex-col justify-center">
-      <div className="max-w-[1400px] mx-auto w-full flex flex-col h-full py-[40px] md:py-[60px] justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-[7fr_4fr] gap-[48px] md:gap-[64px] items-end">
-        <div>
+    <section id="contacto" className="w-full px-[24px] md:px-[6vw] py-[40px] md:py-[60px] bg-dark">
+      <div className="max-w-[1600px] mx-auto w-full flex flex-col h-full py-[20px] md:py-[40px]">
+        
+        {/* Contact Header */}
+        <div className="mb-[60px] md:mb-[100px]">
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="text-[clamp(40px,5vw,72px)] font-light text-dark-fg leading-[1.05] mb-[32px] mt-[24px]"
+            className="text-[clamp(40px,5vw,72px)] font-light text-dark-fg leading-[1.05]"
           >
             Empecemos a<br />
             <em className="italic">proyectar juntos</em>
@@ -46,142 +75,155 @@ export default function Contact() {
             initial={{ width: 0 }}
             whileInView={{ width: 64 }}
             transition={{ duration: 1.2, delay: 0.4 }}
-            className="block h-[1px] bg-[#f8f4f1]/18 mb-[32px]"
+            className="block h-[1px] bg-[#f8f4f1]/18 mt-[32px]"
           />
-          
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.5 }}
-            className="font-body text-[25px] leading-[1.9] text-[#f8f4f1]/45 max-w-[600px]"
-          >
-            Contanos sobre tu proyecto. Agendá una consulta inicial sin cargo
-            y exploremos las posibilidades de tu espacio.
-          </motion.p>
-
-          <motion.div
-            id="ctaMagnetic"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.6 }}
-            className="inline-block mt-[36px]"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            <motion.a
-              href="mailto:info@sgiarquitectura.com"
-              initial="initial"
-              whileHover="hover"
-              className="relative inline-block border border-[#f8f4f1]/25 px-[36px] py-[14px] font-body text-[20px] tracking-[0.25em] uppercase text-dark-fg hover:bg-dark-fg hover:text-dark hover:border-dark-fg"
-            >
-              {/* Corner Ticks */}
-              <svg 
-                className="absolute inset-[-10px] w-[calc(100%+20px)] h-[calc(100%+20px)] pointer-events-none overflow-visible"
-                viewBox="0 0 100 100"
-                preserveAspectRatio="none"
-              >
-                <motion.path
-                  d="M 0 15 L 0 0 L 15 0"
-                  fill="none"
-                  stroke="#f8f4f1"
-                  strokeWidth="2"
-                  vectorEffect="non-scaling-stroke"
-                  variants={{
-                    initial: { pathLength: 0, opacity: 0 },
-                    hover: { pathLength: 1, opacity: 1 }
-                  }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                />
-                <motion.path
-                  d="M 85 0 L 100 0 L 100 15"
-                  fill="none"
-                  stroke="#f8f4f1"
-                  strokeWidth="2"
-                  vectorEffect="non-scaling-stroke"
-                  variants={{
-                    initial: { pathLength: 0, opacity: 0 },
-                    hover: { pathLength: 1, opacity: 1 }
-                  }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                />
-                <motion.path
-                  d="M 100 85 L 100 100 L 85 100"
-                  fill="none"
-                  stroke="#f8f4f1"
-                  strokeWidth="2"
-                  vectorEffect="non-scaling-stroke"
-                  variants={{
-                    initial: { pathLength: 0, opacity: 0 },
-                    hover: { pathLength: 1, opacity: 1 }
-                  }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                />
-                <motion.path
-                  d="M 15 100 L 0 100 L 0 85"
-                  fill="none"
-                  stroke="#f8f4f1"
-                  strokeWidth="2"
-                  vectorEffect="non-scaling-stroke"
-                  variants={{
-                    initial: { pathLength: 0, opacity: 0 },
-                    hover: { pathLength: 1, opacity: 1 }
-                  }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                />
-              </svg>
-              Agendar consulta
-            </motion.a>
-          </motion.div>
         </div>
 
-        <div className="flex flex-col gap-[28px]">
-          {[
-            { label: 'Email', value: 'info@sgiarquitectura.com' },
-            { label: 'Teléfono', value: '+54 351 000 0000' },
-            { label: 'Ubicación', value: 'Córdoba, Argentina' },
-          ].map((info, i) => (
+        {/* Contact Grid: Form + Info */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] xl:grid-cols-[1fr_500px] gap-[64px] lg:gap-[120px]">
+          
+          {/* Left Column: Form */}
+          <div>
+            <motion.form 
+              onSubmit={handleSubmit}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.3 }}
+              className="flex flex-col gap-[40px]"
+            >
+              {/* Name & Email Row */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-[40px]">
+                <div className="relative group">
+                  <input 
+                    type="text" 
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Tu nombre completo"
+                    className="w-full bg-transparent border-b border-[#f8f4f1]/30 py-[16px] text-[#f8f4f1] font-body text-[18px] md:text-[22px] focus:outline-none focus:border-[#f8f4f1] transition-colors placeholder:text-[#f8f4f1]/20 rounded-none"
+                  />
+                </div>
+                <div className="relative group">
+                  <input 
+                    type="email" 
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="Tu correo electrónico"
+                    className="w-full bg-transparent border-b border-[#f8f4f1]/30 py-[16px] text-[#f8f4f1] font-body text-[18px] md:text-[22px] focus:outline-none focus:border-[#f8f4f1] transition-colors placeholder:text-[#f8f4f1]/20 rounded-none"
+                  />
+                </div>
+              </div>
+
+              {/* Message */}
+              <div className="relative group">
+                <textarea 
+                  id="message"
+                  name="message"
+                  required
+                  rows={4}
+                  placeholder="Contanos sobre tu proyecto: dimensiones, ubicación, estilo buscado..."
+                  className="w-full bg-transparent border-b border-[#f8f4f1]/30 py-[16px] text-[#f8f4f1] font-body text-[18px] md:text-[22px] focus:outline-none focus:border-[#f8f4f1] transition-colors placeholder:text-[#f8f4f1]/20 resize-none min-h-[140px] rounded-none"
+                />
+              </div>
+
+              {/* Submit Button & Status */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-[20px]">
+                <motion.div
+                  id="ctaMagnetic"
+                  className="inline-block"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                >
+                  <button
+                    type="submit"
+                    disabled={formState === 'submitting'}
+                    className="relative inline-block border border-[#f8f4f1]/25 px-[36px] py-[16px] font-body text-[16px] md:text-[20px] tracking-[0.25em] uppercase text-[#f8f4f1] hover:bg-[#f8f4f1] hover:text-dark hover:border-[#f8f4f1] transition-colors disabled:opacity-50 disabled:pointer-events-none"
+                  >
+                    {formState === 'submitting' ? (
+                      <span className="flex items-center gap-3">
+                        <Loader2 className="w-5 h-5 animate-spin" /> 
+                        Enviando
+                      </span>
+                    ) : (
+                      'Enviar mensaje'
+                    )}
+                  </button>
+                </motion.div>
+
+                {formState === 'success' && (
+                  <motion.p 
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="text-green-400 font-body text-[16px] tracking-[0.1em]"
+                  >
+                    Tu mensaje fue enviado con éxito.
+                  </motion.p>
+                )}
+                {formState === 'error' && (
+                  <motion.p 
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="text-red-400 font-body text-[16px] tracking-[0.1em]"
+                  >
+                    Hubo un error. Vuelve a intentarlo.
+                  </motion.p>
+                )}
+              </div>
+            </motion.form>
+          </div>
+
+          {/* Right Column: Info */}
+          <div className="flex flex-col gap-[36px] pl-0 lg:pl-[40px] xl:pl-[80px] lg:border-l lg:border-[#f8f4f1]/10">
+            {[
+              { label: 'Email', value: 'info@sgiarquitectura.com' },
+              { label: 'Teléfono', value: '+54 351 000 0000' },
+              { label: 'Estudio', value: 'Nueva Córdoba, Arg' },
+            ].map((info, i) => (
+              <motion.div
+                key={info.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.5 + i * 0.1 }}
+              >
+                <span className="font-body text-[15px] md:text-[18px] tracking-[0.35em] uppercase text-[#f8f4f1]/25 mb-[8px] block">
+                  {info.label}
+                </span>
+                <p className="font-body text-[18px] md:text-[24px] text-[#f8f4f1]/70">{info.value}</p>
+              </motion.div>
+            ))}
+            
             <motion.div
-              key={info.label}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.7 + i * 0.1 }}
+              transition={{ duration: 0.7, delay: 0.8 }}
+              className="mt-[20px]"
             >
-              <span className="font-body text-[16px] md:text-[20px] tracking-[0.35em] uppercase text-[#f8f4f1]/25 mb-[6px] block">
-                {info.label}
+              <span className="font-body text-[15px] md:text-[18px] tracking-[0.35em] uppercase text-[#f8f4f1]/25 mb-[8px] block">
+                Redes
               </span>
-              <p className="font-body text-[20px] md:text-[26px] text-[#f8f4f1]/65">{info.value}</p>
+              <div className="flex gap-[24px]">
+                <a href="#" className="font-body text-[18px] md:text-[22px] text-[#f8f4f1]/70 hover:text-white hover:underline underline-offset-4 transition-all">Instagram</a>
+                <a href="#" className="font-body text-[18px] md:text-[22px] text-[#f8f4f1]/70 hover:text-white hover:underline underline-offset-4 transition-all">LinkedIn</a>
+              </div>
             </motion.div>
-          ))}
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1 }}
-          >
-            <span className="font-body text-[20px] tracking-[0.35em] uppercase text-[#f8f4f1]/25 mb-[6px] block">
-              Redes
-            </span>
-            <div className="flex gap-[20px]">
-              <a href="#" className="font-body text-[23px] text-[#f8f4f1]/65 hover:text-dark-fg transition-colors">Instagram</a>
-              <a href="#" className="font-body text-[23px] text-[#f8f4f1]/65 hover:text-dark-fg transition-colors">LinkedIn</a>
-            </div>
-          </motion.div>
-        </div>
-      </div>
+          </div>
 
-      <motion.footer
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.9 }}
-        className="border-t border-border-dark pt-[20px] mt-[40px] md:mt-[60px] flex flex-col md:flex-row items-center justify-between gap-[12px] text-center shrink-0"
-      >
-        <p className="font-body text-[15px] tracking-[0.2em] uppercase text-[#f8f4f1]/25">
-          © 2025 SGI Arquitectura. Todos los derechos reservados.
-        </p>
-        <p className="font-body text-[15px] tracking-[0.2em] uppercase text-[#f8f4f1]/25">
-          Córdoba, Argentina
-        </p>
-      </motion.footer>
+        </div>
+
+        <motion.footer
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.9 }}
+          className="border-t border-[#f8f4f1]/10 pt-[24px] mt-[80px] md:mt-[120px] flex flex-col sm:flex-row items-center justify-between gap-[16px] text-center shrink-0"
+        >
+          <p className="font-body text-[13px] md:text-[15px] tracking-[0.2em] uppercase text-[#f8f4f1]/25">
+            © 2025 SGI Arquitectura. Todos los derechos reservados.
+          </p>
+          <p className="font-body text-[13px] md:text-[15px] tracking-[0.2em] uppercase text-[#f8f4f1]/25">
+             ESTUDIO
+          </p>
+        </motion.footer>
       </div>
     </section>
   );

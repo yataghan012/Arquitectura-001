@@ -15,7 +15,7 @@ export default function Portfolio({ onProjectClick }: PortfolioProps) {
   const categories = ['all', 'Residencial', 'Comercial', 'Institucional'] as const;
 
   return (
-    <section id="portafolio" className="min-h-screen w-full px-[24px] md:px-[96px] py-[80px] md:py-[120px] bg-bg flex flex-col justify-center">
+    <section id="portafolio" className="w-full px-[24px] md:px-[96px] py-[40px] md:py-[60px] bg-bg">
       <div className="max-w-[1400px] mx-auto w-full flex flex-col h-full">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-[24px] shrink-0">
           <div>

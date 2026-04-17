@@ -79,7 +79,7 @@ export default function Hero() {
   const fgTopX = useTransform(smoothX, [-1, 1], ['-5%', '5%']);
   const fgTopY = useTransform(smoothY, [-1, 1], ['-15%', '15%']);
 
-  const spotlightBackground = useMotionTemplate`radial-gradient(circle 800px at ${smoothAbsX}px ${smoothAbsY}px, rgba(255,255,255,0.08), transparent 80%)`;
+  const spotlightBackground = useMotionTemplate`radial-gradient(circle 800px at ${smoothAbsX}px ${smoothAbsY}px, rgba(255,255,255,0.15), transparent 100%)`;
 
   const noiseSvg = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`;
 
@@ -99,11 +99,11 @@ export default function Hero() {
         transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
       >
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-60"
+          className="absolute inset-0 bg-cover bg-center opacity-64"
           style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-dark/20 via-dark/40 to-dark/90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-dark/60 via-transparent to-dark/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-dark/10 via-transparent to-dark/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-dark/30 via-transparent to-dark/30" />
         
         {/* Reactive Spotlight */}
         <motion.div 
@@ -147,17 +147,17 @@ export default function Hero() {
         className="absolute top-[-10%] left-[-15%] sm:left-[-10%] w-[15vw] sm:w-[20vw] lg:w-[25vw] min-w-[60px] sm:min-w-[120px] h-[120%] z-20 pointer-events-none"
       >
         <motion.div 
-          className="w-full h-full bg-dark/30 backdrop-blur-2xl shadow-[30px_0_60px_rgba(0,0,0,0.7)] relative overflow-hidden"
+          className="w-full h-full bg-dark/10 backdrop-blur-2xl shadow-[30px_0_60px_rgba(0,0,0,0.4)] relative overflow-hidden"
           style={{ 
             x: fgLeftX, 
             y: fgLeftY, 
             rotate: '2deg',
-            boxShadow: 'inset 1px 0 0 rgba(255,255,255,0.15), 30px 0 60px rgba(0,0,0,0.7)'
+            boxShadow: 'inset 1px 0 0 rgba(255,255,255,0.25), 30px 0 60px rgba(0,0,0,0.4)'
           }}
         >
-           <div className="absolute inset-0 opacity-[0.12] mix-blend-overlay" style={{ backgroundImage: noiseSvg }} />
-           <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-transparent to-transparent" />
-           <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/60 to-transparent" />
+           <div className="absolute inset-0 opacity-[0.08] mix-blend-overlay" style={{ backgroundImage: noiseSvg }} />
+           <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-transparent" />
+           <div className="absolute inset-0 bg-gradient-to-r from-dark/30 via-dark/10 to-transparent" />
         </motion.div>
       </motion.div>
       
@@ -169,23 +169,23 @@ export default function Hero() {
         className="absolute top-[-10%] right-[-15%] sm:right-[-10%] w-[15vw] sm:w-[20vw] lg:w-[25vw] min-w-[60px] sm:min-w-[120px] h-[120%] z-20 pointer-events-none"
       >
         <motion.div 
-          className="w-full h-full bg-dark/30 backdrop-blur-2xl shadow-[-30px_0_60px_rgba(0,0,0,0.7)] relative overflow-hidden"
+          className="w-full h-full bg-dark/10 backdrop-blur-2xl shadow-[-30px_0_60px_rgba(0,0,0,0.4)] relative overflow-hidden"
           style={{ 
             x: fgRightX, 
             y: fgRightY, 
             rotate: '-2deg',
-            boxShadow: 'inset -1px 0 0 rgba(255,255,255,0.15), -30px 0 60px rgba(0,0,0,0.7)'
+            boxShadow: 'inset -1px 0 0 rgba(255,255,255,0.25), -30px 0 60px rgba(0,0,0,0.4)'
           }}
         >
-           <div className="absolute inset-0 opacity-[0.12] mix-blend-overlay" style={{ backgroundImage: noiseSvg }} />
-           <div className="absolute inset-0 bg-gradient-to-l from-white/5 via-transparent to-transparent" />
-           <div className="absolute inset-0 bg-gradient-to-l from-dark via-dark/60 to-transparent" />
+           <div className="absolute inset-0 opacity-[0.08] mix-blend-overlay" style={{ backgroundImage: noiseSvg }} />
+           <div className="absolute inset-0 bg-gradient-to-l from-white/10 via-transparent to-transparent" />
+           <div className="absolute inset-0 bg-gradient-to-l from-dark/30 via-dark/10 to-transparent" />
         </motion.div>
       </motion.div>
 
       {/* Top Beam */}
       <motion.div 
-        className="absolute top-[-5%] left-[-10%] w-[120%] h-[15vh] min-h-[80px] bg-gradient-to-b from-[#050505] to-transparent z-20 pointer-events-none"
+        className="absolute top-[-5%] left-[-10%] w-[120%] h-[15vh] min-h-[80px] bg-gradient-to-b from-dark/90 to-transparent z-20 pointer-events-none"
         style={{ x: fgTopX, y: fgTopY, rotate: '-1deg' }}
       />
     </section>
